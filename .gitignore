@@ -1,1 +1,4 @@
 .idea/
+
+cft-params/*
+!cft-params/*.dist.json

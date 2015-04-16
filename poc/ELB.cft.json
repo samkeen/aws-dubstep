@@ -1,0 +1,13 @@
+"MyLoadBalancer" : {
+"Type" : "AWS::ElasticLoadBalancing::LoadBalancer",
+"Properties" : {
+"Instances" : [
+{ "Ref" : "Ec2Instance" }
+],
+"Listeners" : [ {
+"LoadBalancerPort" : "80",
+"InstancePort" : "80",
+"Protocol" : "HTTP"
+} ]
+}
+},

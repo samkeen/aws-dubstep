@@ -1,0 +1,22 @@
+[
+  {
+    "ParameterKey": "OwnerTagParam",
+    "ParameterValue": ""
+  },
+  {
+    "ParameterKey": "RoleTagParam",
+    "ParameterValue": ""
+  },
+  {
+    "ParameterKey": "InstanceTypeParam",
+    "ParameterValue": ""
+  },
+  {
+    "ParameterKey": "EC2SecurityGroupIdsParam",
+    "ParameterValue": ""
+  },
+  {
+    "ParameterKey": "EC2KeyPairParam",
+    "ParameterValue": ""
+  }
+]
