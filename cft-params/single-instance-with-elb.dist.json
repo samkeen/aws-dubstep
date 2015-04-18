@@ -22,5 +22,9 @@
   {
     "ParameterKey": "EC2KeyPairParam",
     "ParameterValue": ""
+  },
+  {
+    "ParameterKey": "ElbSubnetsParam",
+    "ParameterValue": "<subnet1>, <subnet2>, ..."
   }
 ]

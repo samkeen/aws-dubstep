@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "A simple stack that launches a single instance. Ubuntu Server 14.04 LTS Marketplace",
+  "Description": "A simple stack that launches a single web server into a VPC public subnet",
   "Parameters" : {
     "OwnerTagParam" : {
       "Type" : "String",
@@ -22,8 +22,12 @@
       "Type" : "String",
       "Description" : "The AMI id"
     },
-    "EC2SecurityGroupNamesParam" : {
-      "Type" : "CommaDelimitedList",
+    "EC2SubnetIdParam" : {
+      "Type" : "String",
+      "Description" : "The public VPC subnet for this instance"
+    },
+    "EC2SecurityGroupIdsParam" : {
+      "Type" : "List<AWS::EC2::SecurityGroup::Id>",
       "Description" : "Security Group Names"
     },
     "EC2KeyPairParam" : {
@@ -51,7 +55,8 @@
         "ImageId" : { "Ref" : "AmiIdParam" },
         "InstanceType": { "Ref" : "InstanceTypeParam" },
         "KeyName": { "Ref" : "EC2KeyPairParam" },
-        "SecurityGroups" : { "Ref" : "EC2SecurityGroupNamesParam" },
+        "SecurityGroupIds" : { "Ref" : "EC2SecurityGroupIdsParam" },
+        "SubnetId" : { "Ref" : "EC2SubnetIdParam" },
         "Tags": [
           {"Key": "owner", "Value": { "Ref" : "OwnerTagParam" }},
           {"Key": "role", "Value": { "Ref" : "RoleTagParam" }}
