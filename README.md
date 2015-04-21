@@ -6,8 +6,8 @@
 
 ```
 aws --profile=test cloudformation create-stack \
-  --template-body file://poc/single-instance.cft.json \
-  --parameters file://cft-params/single-instance.json \
+  --template-body file://poc/app_stack/web_server/elb-single.cft.json \
+  --parameters file://cft-params/single-instance-with-elb.json \
   --stack-name testing-cf
 ```
 

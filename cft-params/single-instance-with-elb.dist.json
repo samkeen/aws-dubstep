@@ -16,6 +16,10 @@
     "ParameterValue": ""
   },
   {
+    "ParameterKey": "ElbSecurityGroupIdsParam",
+    "ParameterValue": ""
+  },
+  {
     "ParameterKey": "EC2SecurityGroupIdsParam",
     "ParameterValue": ""
   },
@@ -25,6 +29,10 @@
   },
   {
     "ParameterKey": "ElbSubnetsParam",
-    "ParameterValue": "<subnet1>, <subnet2>, ..."
+    "ParameterValue": ""
+  },
+  {
+    "ParameterKey": "EC2SubnetIdParam",
+    "ParameterValue": ""
   }
 ]
