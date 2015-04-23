@@ -1,0 +1,56 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "A simple stack that launches a single web server into a VPC public subnet",
+  "Resources": {
+    "Ec2Instance": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "ImageId" : { "Ref" : "AmiIdParam" },
+        "InstanceType": { "Ref" : "InstanceTypeParam" },
+        "KeyName": { "Ref" : "EC2KeyPairParam" },
+        "SecurityGroupIds" : { "Ref" : "EC2SecurityGroupIdsParam" },
+        "SubnetId" : { "Ref" : "EC2SubnetIdParam" },
+        "Tags": [
+          {"Key": "owner", "Value": { "Ref" : "OwnerTagParam" }},
+          {"Key": "role", "Value": { "Ref" : "RoleTagParam" }}
+        ]
+      }
+    }
+  },
+  "WebElbSG" : {
+    "Type" : "AWS::EC2::SecurityGroup",
+    "Properties" :
+    {
+      "GroupDescription" : "The Web ELB SG",
+      "SecurityGroupEgress" : [
+        {
+          "IpProtocol" : "tcp",
+          "FromPort" : "0",
+          "ToPort" : "65535",
+          "CidrIp" : "0.0.0.0/0"
+        }
+      ],
+      "SecurityGroupIngress" : [
+        {
+          "IpProtocol" : "tcp",
+          "FromPort" : "80",
+          "ToPort" : "80",
+          "CidrIp" : "0.0.0.0/0"
+        },
+        {
+          "IpProtocol" : "tcp",
+          "FromPort" : "443",
+          "ToPort" : "443",
+          "CidrIp" : "0.0.0.0/0"
+        }
+      ],
+      "VpcId" : "vpc-80e258e5"
+    }
+  },
+  "Outputs" : {
+    "WebElbSG" : {
+      "Description": "The ELB SG",
+      "Value" : { "Ref" : "WebElbSG" }
+    }
+  }
+}
